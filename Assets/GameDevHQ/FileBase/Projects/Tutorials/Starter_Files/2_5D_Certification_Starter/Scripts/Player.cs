@@ -10,6 +10,10 @@ public class Player : MonoBehaviour
 
     [SerializeField] private AudioSource _footstepsAudioSource;
 
+    private bool _rechargeToggle = false;
+    public bool _canMove = true;
+    public bool ledgeGrabbing = false;
+
     [SerializeField] private float _speed = 5f;
 
     [SerializeField] private float _jumpHeight = 25;
@@ -27,17 +31,36 @@ public class Player : MonoBehaviour
     }
 
     void Update()
+    {        
+        CalculateMovement();
+
+    }
+
+
+    private void CalculateMovement()
     {
         float _horizontal = Input.GetAxisRaw("Horizontal");
         RunningSound(_horizontal);
 
         if (_controller.isGrounded)
         {
-            _direction = new Vector3(0, 0, _horizontal);
-            _velocity = _direction * _speed;
+            if (_canMove)
+            {
+                _direction = new Vector3(0, 0, _horizontal);
+                _velocity = _direction * _speed;
+                SetModelDirection(_horizontal);
 
-            
-            SetModelDirection(_horizontal);
+            }
+            //else
+            //{
+            //    if (!_rechargeToggle)
+            //    {
+            //        _rechargeToggle = true;
+            //        StartCoroutine(LandingRecharge(.5f));
+            //    }
+            //}
+
+
             _animatior.SetFloat("Speed", Mathf.Abs(_horizontal));
             _animatior.SetBool("Grounded", true);
 
@@ -46,7 +69,10 @@ public class Player : MonoBehaviour
                 _yVelocity = _jumpHeight; // NOT += 
                 _animatior.SetBool("Jumping", true);
                 //_animatior.SetTrigger("Jump");
+                //  _rechargeToggle = false;
+                // _canMove = false;
             }
+
         }
         else
         {
@@ -94,5 +120,18 @@ public class Player : MonoBehaviour
         {
             _footstepsAudioSource.volume = 0f;
         }
+    }
+
+    private IEnumerator LandingRecharge(float delay)
+    {
+        yield return new WaitForSecondsRealtime(delay);
+        _canMove = true;
+    }
+
+
+    public void LedgeGrab()
+    {
+        _controller.enabled = false;
+        _animatior.SetBool("LedgeGrab", true);
     }
 }
