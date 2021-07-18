@@ -129,9 +129,10 @@ public class Player : MonoBehaviour
     }
 
 
-    public void LedgeGrab()
+    public void LedgeGrab(Vector3 grabPos)
     {
         _controller.enabled = false;
         _animatior.SetBool("LedgeGrab", true);
+        transform.position = grabPos;
     }
 }

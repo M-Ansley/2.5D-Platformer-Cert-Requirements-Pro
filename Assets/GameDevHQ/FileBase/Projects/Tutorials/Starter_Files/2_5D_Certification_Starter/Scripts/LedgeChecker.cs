@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class LedgeChecker : MonoBehaviour
 {
-    [SerializeField] private Player _player;
+    [SerializeField] private static Player _player;
     //[SerializeField] private Animator _playerAnimator;
+    [SerializeField] private Transform _ledgeGrabTransform;
 
     private void Start()
     {
@@ -23,7 +24,8 @@ public class LedgeChecker : MonoBehaviour
             Debug.Log("Ledge grab checker detected");
             if (_player != null)
             {
-                _player.LedgeGrab();
+                _player.LedgeGrab(_ledgeGrabTransform.position);
+
             }
         }
     }
