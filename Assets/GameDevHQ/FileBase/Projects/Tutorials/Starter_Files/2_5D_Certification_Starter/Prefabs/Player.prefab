@@ -118,6 +118,7 @@ MonoBehaviour:
   _model: {fileID: 7579215423109093}
   _footstepsAudioSource: {fileID: 7579215203655336}
   _canMove: 1
+  ledgeGrabbing: 0
   _speed: 15
   _jumpHeight: 30
   _gravity: 1
@@ -2894,8 +2895,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7579215583270535}
   m_LocalRotation: {x: -0.032324277, y: 0.69977695, z: -0.031728186, w: -0.7129241}
-  m_LocalPosition: {x: 10.068677, y: 1.7944183, z: 0.22715506}
-  m_LocalScale: {x: 0.33333337, y: 0.3333333, z: 0.33333334}
+  m_LocalPosition: {x: 10.068678, y: 1.7944183, z: 0.22715506}
+  m_LocalScale: {x: 0.33333343, y: 0.33333328, z: 0.33333334}
   m_Children: []
   m_Father: {fileID: 7579215203655318}
   m_RootOrder: 1

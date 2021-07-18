@@ -6,6 +6,7 @@ public class Player : MonoBehaviour
 {
     private CharacterController _controller;
     private Animator _animatior;
+    private LedgeChecker _currentLedge;
     [SerializeField] private GameObject _model;
 
     [SerializeField] private AudioSource _footstepsAudioSource;
@@ -24,14 +25,29 @@ public class Player : MonoBehaviour
     private Vector3 _direction;
     private Vector3 _velocity;
 
+
     void Start()
     {
         _controller = GetComponent<CharacterController>();
         _animatior = GetComponentInChildren<Animator>();
     }
 
-    void Update()
-    {        
+    private void Update()
+    {
+        if (_controller.isGrounded)
+        {
+            if (Input.GetButtonDown("Jump"))
+            {
+                _yVelocity = _jumpHeight; // NOT += 
+                _animatior.SetBool("Jumping", true);
+            }
+
+        }
+        LedgeGrabbingBehaviour();
+    }
+
+    void FixedUpdate()
+    {
         CalculateMovement();
 
     }
@@ -85,6 +101,20 @@ public class Player : MonoBehaviour
         _controller.Move(_velocity * Time.deltaTime);
     }
 
+    /// <summary>
+    /// Returns true if currently facing right; false if currently facing left
+    /// </summary>
+    private bool FacingRight()
+    {
+        if (_model.transform.localEulerAngles.y == 0)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
 
     private void SetModelDirection(float axisInput)
     {
@@ -129,10 +159,45 @@ public class Player : MonoBehaviour
     }
 
 
-    public void LedgeGrab(Vector3 grabPos)
+    private void LedgeGrabbingBehaviour()
     {
+        if (ledgeGrabbing)
+        {
+            if (Input.GetKeyDown(KeyCode.E))
+            {
+                _animatior.SetTrigger("ClimbUp");
+            }
+        }
+    }
+
+    public void LedgeGrab(Vector3 grabPos, LedgeChecker ledge)
+    {
+        ledgeGrabbing = true;
+        _currentLedge = ledge;
         _controller.enabled = false;
         _animatior.SetBool("LedgeGrab", true);
+        _animatior.SetFloat("Speed", 0.0f);
+        _animatior.SetBool("Jumping", false);
+        _animatior.SetBool("Grounded", true);
         transform.position = grabPos;
+    }
+
+    public void ClimbUp()
+    {
+        if (FacingRight())
+        {
+            Vector3 increasePos = new Vector3(0, 7.24f, 1f);
+            transform.position += increasePos;
+        }
+        else
+        {
+            Vector3 increasePos = new Vector3(0, 7.24f, -1f);
+            transform.position += increasePos;
+        }
+        _controller.enabled = true;
+        _animatior.SetBool("LedgeGrab", false);
+        _currentLedge = null;
+        ledgeGrabbing = false;
+        //transform.position = new Vector3(0, 7.24, )
     }
 }

@@ -24,7 +24,7 @@ public class LedgeChecker : MonoBehaviour
             Debug.Log("Ledge grab checker detected");
             if (_player != null)
             {
-                _player.LedgeGrab(_ledgeGrabTransform.position);
+                _player.LedgeGrab(_ledgeGrabTransform.position, this);
 
             }
         }
