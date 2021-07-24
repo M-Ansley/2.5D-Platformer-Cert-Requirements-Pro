@@ -5,7 +5,6 @@ using UnityEngine;
 public class LedgeChecker : MonoBehaviour
 {
     [SerializeField] private static Player _player;
-    //[SerializeField] private Animator _playerAnimator;
     [SerializeField] private Transform _ledgeGrabTransform;
 
     private void Start()
@@ -13,7 +12,6 @@ public class LedgeChecker : MonoBehaviour
         if (FindObjectOfType<Player>() != null)
         {
             _player = FindObjectOfType<Player>();
-            //_playerAnimator = _player.gameObject.GetComponentInChildren<Animator>();
         }
     }
 

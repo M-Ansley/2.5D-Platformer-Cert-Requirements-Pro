@@ -80,21 +80,16 @@ public class Player : MonoBehaviour
             _animatior.SetFloat("Speed", Mathf.Abs(_horizontal));
             _animatior.SetBool("Grounded", true);
 
-            if (Input.GetButtonDown("Jump"))
-            {
-                _yVelocity = _jumpHeight; // NOT += 
-                _animatior.SetBool("Jumping", true);
-                //_animatior.SetTrigger("Jump");
-                //  _rechargeToggle = false;
-                // _canMove = false;
-            }
-
         }
         else
         {
-            _animatior.SetBool("Jumping", false);
-            _animatior.SetBool("Grounded", false);
-            _yVelocity -= _gravity;
+            if (!ledgeGrabbing)
+            {
+                _animatior.SetBool("Jumping", false);
+                _animatior.SetBool("Grounded", false);
+                _yVelocity -= _gravity;
+
+            }
         }
 
         _velocity.y = _yVelocity;
