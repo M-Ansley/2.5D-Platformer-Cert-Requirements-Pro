@@ -44,16 +44,19 @@ public class Player : MonoBehaviour
 
         }
         LedgeGrabbingBehaviour();
+        CalculateGroundedMovement();
     }
 
     void FixedUpdate()
     {
-        CalculateMovement();
-
+        CalculateUngroundedMovement();        
     }
 
 
-    private void CalculateMovement()
+    /// <summary>
+    /// Run in Update to let platforms control our position
+    /// </summary>
+    private void CalculateGroundedMovement()
     {
         float _horizontal = Input.GetAxisRaw("Horizontal");
         RunningSound(_horizontal);
@@ -67,33 +70,29 @@ public class Player : MonoBehaviour
                 SetModelDirection(_horizontal);
 
             }
-            //else
-            //{
-            //    if (!_rechargeToggle)
-            //    {
-            //        _rechargeToggle = true;
-            //        StartCoroutine(LandingRecharge(.5f));
-            //    }
-            //}
-
 
             _animatior.SetFloat("Speed", Mathf.Abs(_horizontal));
             _animatior.SetBool("Grounded", true);
 
         }
-        else
+        _velocity.y = _yVelocity;
+        _controller.Move(_velocity * Time.deltaTime);
+    }
+
+    /// <summary>
+    /// Run in FixedUpdate (for jump consistency on lower performance)
+    /// </summary>
+    private void CalculateUngroundedMovement()
+    {
+        if (!_controller.isGrounded)
         {
             if (!ledgeGrabbing)
             {
                 _animatior.SetBool("Jumping", false);
                 _animatior.SetBool("Grounded", false);
                 _yVelocity -= _gravity;
-
             }
         }
-
-        _velocity.y = _yVelocity;
-        _controller.Move(_velocity * Time.deltaTime);
     }
 
     /// <summary>
