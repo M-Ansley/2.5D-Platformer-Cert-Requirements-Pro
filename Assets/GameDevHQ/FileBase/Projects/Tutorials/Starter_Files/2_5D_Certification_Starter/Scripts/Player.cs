@@ -25,6 +25,8 @@ public class Player : MonoBehaviour
     private Vector3 _direction;
     private Vector3 _velocity;
 
+    private bool _rolling = false;
+    private bool _canMoveVertically = true;
 
     void Start()
     {
@@ -41,15 +43,25 @@ public class Player : MonoBehaviour
                 _yVelocity = _jumpHeight; // NOT += 
                 _animatior.SetBool("Jumping", true);
             }
+            else if (Input.GetKeyDown(KeyCode.LeftShift))
+            {
+                if (!_rolling)
+                {
+                    StartCoroutine(BarrelRoll());
+                }
+            }
 
         }
         LedgeGrabbingBehaviour();
-        CalculateGroundedMovement();
+        if (_canMoveVertically)
+        {
+            CalculateGroundedMovement();
+        }
     }
 
     void FixedUpdate()
     {
-        CalculateUngroundedMovement();        
+        CalculateUngroundedMovement();
     }
 
 
@@ -193,5 +205,36 @@ public class Player : MonoBehaviour
         _currentLedge = null;
         ledgeGrabbing = false;
         //transform.position = new Vector3(0, 7.24, )
+    }
+
+    IEnumerator BarrelRoll()
+    {
+        _canMoveVertically = false;
+        _rolling = true;
+        _animatior.SetTrigger("Roll");
+        yield return new WaitForSecondsRealtime(0.5f);
+        Vector3 startPos = transform.position;
+        Vector3 endPos = startPos;
+        
+        if (FacingRight())
+        {
+            endPos += new Vector3(0, 0, 17f);
+        }
+        else
+        {
+            endPos -= new Vector3(0, 0, 17f);
+        }
+
+       
+        float duration = 1.2f;
+        float time = 0;
+        while (transform.position != endPos && _controller.isGrounded)
+        {
+            transform.position = Vector3.Lerp(startPos, endPos, (time / duration));
+            time += Time.deltaTime;
+            yield return null;
+        }
+        _canMoveVertically = true;
+        _rolling = false;
     }
 }
