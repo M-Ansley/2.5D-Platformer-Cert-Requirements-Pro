@@ -226,7 +226,7 @@ public class Player : MonoBehaviour
         }
 
        
-        float duration = 1.2f;
+        float duration = .85f;
         float time = 0;
         while (transform.position != endPos && _controller.isGrounded)
         {
@@ -234,6 +234,8 @@ public class Player : MonoBehaviour
             time += Time.deltaTime;
             yield return null;
         }
+
+        yield return new WaitForSecondsRealtime(0.5f);
         _canMoveVertically = true;
         _rolling = false;
     }
