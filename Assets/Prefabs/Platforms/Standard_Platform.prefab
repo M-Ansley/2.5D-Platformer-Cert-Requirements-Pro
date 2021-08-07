@@ -5158,7 +5158,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 3503853807799899121}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 93ca3d7cb7914684f9fd2ee82bf6a026, type: 3}
+  m_Script: {fileID: 11500000, guid: 077894186a30719448dd49aadb2db59e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _ledgeGrabTransform: {fileID: 3503853806925980352}
@@ -6033,7 +6033,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 4240861001437413245}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 93ca3d7cb7914684f9fd2ee82bf6a026, type: 3}
+  m_Script: {fileID: 11500000, guid: 077894186a30719448dd49aadb2db59e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _ledgeGrabTransform: {fileID: 3619690486766286759}

@@ -323,7 +323,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 401682377227908760}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 93ca3d7cb7914684f9fd2ee82bf6a026, type: 3}
+  m_Script: {fileID: 11500000, guid: 077894186a30719448dd49aadb2db59e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _ledgeGrabTransform: {fileID: 401682375821297577}
@@ -588,7 +588,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1146640113420196372}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 93ca3d7cb7914684f9fd2ee82bf6a026, type: 3}
+  m_Script: {fileID: 11500000, guid: 077894186a30719448dd49aadb2db59e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _ledgeGrabTransform: {fileID: 506803215609926350}
@@ -5782,7 +5782,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7374100850743749312}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: Standard_Platform_Small
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

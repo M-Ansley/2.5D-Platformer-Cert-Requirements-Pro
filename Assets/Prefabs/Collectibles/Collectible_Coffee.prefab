@@ -1,19 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &3277940872500453962
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3277940873374246283}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 37ba9daca07792446885c42cd9562516, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _positionOffset: {x: 0, y: 0.5, z: 0}
-  _yRotationAmount: 45
 --- !u!1 &3277940872571424446
 GameObject:
   m_ObjectHideFlags: 0
@@ -45,6 +31,34 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
+--- !u!65 &2808561482568196059
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3277940873374246283}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.17744882, y: 0.13851942, z: 0.12000003}
+  m_Center: {x: 0.028722543, y: 0.06925971, z: 0.00000056251884}
+--- !u!114 &3277940872500453962
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3277940873374246283}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 944d734f1c3d5124f99a08d9b2fc85ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _collectibleType: 0
+  _positionOffset: {x: 0, y: 0.5, z: 0}
+  _yRotationAmount: 45
 --- !u!1001 &3277940873374278443
 PrefabInstance:
   m_ObjectHideFlags: 0

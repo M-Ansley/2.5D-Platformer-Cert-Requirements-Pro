@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 7579215203655317}
   - component: {fileID: 7579215203655314}
   - component: {fileID: 7579215203655337}
+  - component: {fileID: 8380041009820784435}
   - component: {fileID: 7579215203655336}
   m_Layer: 0
   m_Name: Player
@@ -111,15 +112,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 7579215203655315}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 085493cd663b35d4f93021348dedaf50, type: 3}
+  m_Script: {fileID: 11500000, guid: 23c6d7a63badd0f46aa7d8f0b3484a7f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _model: {fileID: 7579215423109093}
   _footstepsAudioSource: {fileID: 7579215203655336}
   _canMove: 1
   ledgeGrabbing: 0
-  _speed: 15
-  _jumpHeight: 30
+  _speed: 5
+  _jumpHeight: 25
   _gravity: 1
 --- !u!114 &7579215203655337
 MonoBehaviour:
@@ -130,7 +131,19 @@ MonoBehaviour:
   m_GameObject: {fileID: 7579215203655315}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 785e4ada3920c014996f8a50b059b442, type: 3}
+  m_Script: {fileID: 11500000, guid: ee7f80efe01cd4742b9ee41ba1764b62, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &8380041009820784435
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7579215203655315}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 42d8968f2e8f41b4ea57f555fea646d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!82 &7579215203655336
